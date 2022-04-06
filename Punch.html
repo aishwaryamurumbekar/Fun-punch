@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      punch Aish in the face
+      <style>
+         html, body{height: 100%;width: 100%; margin:0;}
+         #body{ height: calc(100% - 4rem); background: center / cover; }
+         #body.imageOne {background-image:
+         url("https://i.ibb.co/fGY9LR5/Avatar-Maker1.png");}
+         #body.imageTwo {background-image:
+         url("https://i.ibb.co/WgvbY0W/Avatar-Maker2.png");}
+         #body.imageThree {background-image:
+         url("https://i.ibb.co/HVSgPTr/Avatar-Maker3.png");}
+         #body.imageFour {background-image:
+         url("https://i.ibb.co/Vp6YB1j/Avatar-Maker4.png");}
+         #body.imageFive {background-image:
+         url("https://i.ibb.co/r3m6nZ6/Avatar-Maker5.png");}
+         .better {
+         display: none;
+         }
+         .button {
+         disabled: true;
+         background-color: grey;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="body" class="imageOne"></div>
+      <progress id="health" value="100" max="100"></progress>
+      <div id="better-text" class="better">Feeling better now? Apologies accepted??</div>
+      <button id="restart-btn" class="button">Not feeling Better!</button>
+      <script type="text/javascript">
+         const className = ['imageOne','imageTwo','imageThree','imageFour','imageFive'];
+         let index = 0;
+         let health = document.getElementById("health");
+         function updateClassName() {
+         this.className = className[++index % className.length];
+         health.value -= 20;
+         if (health.value <= 0) {
+         document.getElementById("body").style.display = "none";
+         document.getElementById("better-text").style.display = "block";
+         document.getElementById("restart-btn").disabled = false;
+         document.getElementById("restart-btn").style.backgroundColor = "white";
+         }
+         console.log(health.value);
+         console.log(this.className);
+         }
+         function restartClassName() {
+         document.getElementById('body').className = "imageOne";
+         health.value = 100;
+         console.log(health);
+         console.log(document.getElementById('body').className);
+         document.getElementById("body").style.display = "block";
+         document.getElementById("better-text").style.display = "none";
+         document.getElementById("restart-btn").disabled = true;
+         document.getElementById("restart-btn").style.backgroundColor = "grey";
+         }
+         document.getElementById('body').addEventListener("click", updateClassName);
+         document.getElementById('restart-btn').addEventListener("click", restartClassName);
+      </script>
+   </body>
+</html>
